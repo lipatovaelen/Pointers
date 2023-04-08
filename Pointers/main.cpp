@@ -1,10 +1,13 @@
 #include<iostream>
+#include<stdarg.h>
 using namespace std;
 using std::cin;
 using std::cout;
 using std::endl;
 
-#define tab "\t"
+int Sum(int n, ...);
+
+//#define tab "\t"
 
 //4 Byte = 2 в степени (32) или 2 в (32)
 // 4 Byte = 4 GByte
@@ -13,7 +16,7 @@ using std::endl;
 
 //#define POINTER_BASICS
 //#define MASSIV
-#define FUNCTION_INDICATOR
+#define FUNCTION_VAR_ARG
 
 
 
@@ -80,26 +83,30 @@ void main()
 	cout << endl;
 #endif // MASSIV
 
-#ifdef FUNCTION_INDICATOR
-	int n;
+	cout << Sum(3, 8, 8, 13, 21, 34, 0) << endl;
+}
 
-	int sum(int n,...);//объявление функции с неизвестными параметрами 
+#ifdef FUNCTION_VAR_ARG
+
+
+int Sum(int n, ...)//объявление функции с неизвестными параметрами 
+{
+	int sum = 0;//инициализация значения суммы в ноль
+	
+	/*int* pn = &n;//взятие адреса у первого прараметра  "P" - параметры
+	
+	while (*pn !=0)//пока встречаются параметры
 	{
-		int* p = &n;//взятие адреса у первого прараметра  "P" - параметры
-		int sum = 0;//инициализация значения суммы в ноль
-		while(*p)//пока встречаются параметры
-		{
-			sum = sum + (*p) << ; //прибавляем к сумме то что взяли по адресу Р
-				p++; // смена текущего адреса на следующий
-		}
-
-		cout << sum << endl; //вывод на экран
-
+		sum += *pn++; //прибавляем к сумме то что взяли по адресу Р
+		// смена текущего адреса на следующий
 	}
-
-
-
-#endif // FUNCTION_INDICATOR
-
+	*/
+	for (int* pn = &n; *pn; pn++) sum += *pn;
+	return sum;
+	
 
 }
+
+
+
+#endif // FUNCTION_VAR_ARG
