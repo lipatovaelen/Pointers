@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 class  Point
@@ -64,28 +64,28 @@ public:
 };
 
 //#define STRUCT_POINT
-
-//#define STRUCT_POINT2
+//#define CONSTRSTRUCT_CHEK
 
 void main()
 {
 	setlocale(LC_ALL, "");
 
 #ifdef STRUCT_POINT
-	int a; //объявление переменноцй а типа int
-		Point A; //объявление переменноцй А типа Point
-				//объявление объекта А структуры Point
-				//создание экземпляра А структуры Point
+	int a; //РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕС†Р№ Р° С‚РёРїР° int
+		Point A; //РѕР±СЉСЏРІР»РµРЅРёРµ РїРµСЂРµРјРµРЅРЅРѕС†Р№ Рђ С‚РёРїР° Point
+				//РѕР±СЉСЏРІР»РµРЅРёРµ РѕР±СЉРµРєС‚Р° Рђ СЃС‚СЂСѓРєС‚СѓСЂС‹ Point
+				//СЃРѕР·РґР°РЅРёРµ СЌРєР·РµРјРїР»СЏСЂР° Рђ СЃС‚СЂСѓРєС‚СѓСЂС‹ Point
 	A.x = 2;
 	A.y = 3;
 	cout << A.x << "\t" << A.y << endl;
-	cout << sizeof(A) << endl; // сколько занимает байт памяти выходит на экран
+	cout << sizeof(A) << endl; // СЃРєРѕР»СЊРєРѕ Р·Р°РЅРёРјР°РµС‚ Р±Р°Р№С‚ РїР°РјСЏС‚Рё РІС‹С…РѕРґРёС‚ РЅР° СЌРєСЂР°РЅ
 	Point* pA = &A;
 	cout << pA-> x << "\t" << pA->y << endl;
 
 #endif // STRUCT_POINT
 	
 	
+#ifdef CONSTRSTRUCT_CHEK
 	Point A;
 	//A.set_x(2);
 	//A.set_y(3);
@@ -94,8 +94,10 @@ void main()
 
 	Point B = 5;
 	B.print();
-	
+
 	Point C(2, 3);
 	C.print();
+#endif // CONSTRSTRUCT_CHEK
+
 
 };
