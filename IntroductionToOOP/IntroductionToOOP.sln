@@ -7,6 +7,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IntroductionToOOP", "Introd
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fraction", "Fraction\Fraction.vcxproj", "{61AE9DD2-A46E-49DB-A01F-5EF8BFDC0A42}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "String", "String\String.vcxproj", "{B2F4DD76-6346-4BAF-9115-91F95FB30F52}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fraction-1", "Fraction-1\Fraction-1.vcxproj", "{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +35,22 @@ Global
 		{61AE9DD2-A46E-49DB-A01F-5EF8BFDC0A42}.Release|x64.Build.0 = Release|x64
 		{61AE9DD2-A46E-49DB-A01F-5EF8BFDC0A42}.Release|x86.ActiveCfg = Release|Win32
 		{61AE9DD2-A46E-49DB-A01F-5EF8BFDC0A42}.Release|x86.Build.0 = Release|Win32
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Debug|x64.ActiveCfg = Debug|x64
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Debug|x64.Build.0 = Debug|x64
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Debug|x86.ActiveCfg = Debug|Win32
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Debug|x86.Build.0 = Debug|Win32
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Release|x64.ActiveCfg = Release|x64
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Release|x64.Build.0 = Release|x64
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Release|x86.ActiveCfg = Release|Win32
+		{B2F4DD76-6346-4BAF-9115-91F95FB30F52}.Release|x86.Build.0 = Release|Win32
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Debug|x64.ActiveCfg = Debug|x64
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Debug|x64.Build.0 = Debug|x64
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Debug|x86.ActiveCfg = Debug|Win32
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Debug|x86.Build.0 = Debug|Win32
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Release|x64.ActiveCfg = Release|x64
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Release|x64.Build.0 = Release|x64
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Release|x86.ActiveCfg = Release|Win32
+		{FABBEDA8-98F1-4852-BA4C-5F4AE9B79B01}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
