@@ -1,8 +1,9 @@
 ﻿#include<iostream>
 using namespace std;
 
-class String;
-String operator+(const String& left, const String& right);
+class String; // объявляем класс String перед оператором
+String operator+(const String& left, const String& right); // оператор +
+class Matrix;
 
 class String
 {
@@ -49,6 +50,34 @@ public:
 		cout << "CopiConstr: " << this << endl;
 	}
 
+	String(String&& other)  //move - метод  Shellow copy - поверхностное копирoвоание
+	{
+		//move - метод  Shellow copyвыполнили поверхностное копирвоание
+		this->size = other.size; // присвоить size
+		this->str = other.str;   // присвоить str
+		//обнуляем другой объект
+		other.size = 0;
+		other.str = nullptr; // обнуление строки
+
+			cout << "MoveConstructor: \t" << this << endl;
+	}
+
+	String& operator=(String&& other)  //move - метод  Shellow copy - поверхностное копирoвоание
+	{
+		//move - метод  Shellow copyвыполнили поверхностное копирвоание
+		delete[] str;
+		this->size = other.size; // присвоить size
+		this->str = other.str;   // присвоить str
+		//обнуляем другой объект
+		other.size = 0;
+		other.str = nullptr; // обнуление строки
+
+		cout << "MoveConstructor: \t\t" << this << endl;
+		return *this;
+	}
+
+
+
 	~String()
 	{
 		delete[] this->str;
@@ -58,12 +87,12 @@ public:
 	// Operators секция операто
 
 	
-	String& operator=(const String& other)
+	String& operator=(const String& other) //оператор присваивания возвращает Strin по ссылке &
 	{
 		/*int a = 2;
 		int b = 3;
-		a = b;*/
-		delete[] str;
+		a = b;*/ //в этой строке 2 удаляется
+		delete[] str;  //удаляем старую память принадлежащую объекту (ы)
 		this->size = other.size;
 		this->str = new char[size] {};
 		for (int i = 0; i < size; i++)
@@ -97,6 +126,11 @@ public:
 		cout << "Str:  " << str << endl;
 	}
 };
+
+class Matrix {
+
+};
+
 
 String operator+(const String& left, const String& right) //строка с результатом копируется на место вызова. нужен конструктор копирвоанияч
 // оператор плюс . перегружаем за классом. возвращает две строчки типа чар
@@ -144,15 +178,49 @@ void main()
 	String str2 = "World"; //нужен оператор плюс. перегружаем за классом. возвращает две строчки типа чар оператор
 	cout << str2 << endl;
 
-	//String str3 = str1 + str2;
-	String str3;
+	String str3 = str1 + " " + str2; //сopy constructor
+	//String str3;
+	//str3 = str1 + str2;
 	cout << str3 << endl;
-	str1 += str2;
-	cout << str1 << endl;
+	//str1 += str2;
+	//cout << str1 << endl;
 
 
 
 #endif // HOME_WORK
+
+	//move- методы  - методы переноса
+	//move-constructor - конструктор переноса
+	//move -Assignmen   -  оператор присваивания переноса
+
+	//move - методы выполняют Shellow copy - поверхностное копирвоание
+
+	//r - value reference   Class && other 
+
+	
+	/*неявно вызываются когда создаваемый (существующиц) объект инициализируется 
+	значением временного безымянного объекта
+	временный бызымянный объект всяыкий раз неявно создается когда функция возвращает
+	значение по значению
+	в тпаком случае возвращаемое занчение копируетсч на место вызова
+	и если возвращаеоме значение является рбъектом то для него вызываетсч конструктор копирования
+	если возвоазщаемый объект использует динамичесую память то 
+	конструктор попирвоания выделит новые рсурсы и выполнит губокое коипровни е 
+		которо е приводит к затратам ресурсов памяти и процесорного времени*/
+	/*следует учитывать что на место вызова копируектся локильный объект который
+	сейчас же будет удален из памяти
+	т.е все эти ресурсвы затрачиваются на копирвание того что спейчас будет удалено
+	вместо копирования и удаления локального объекта его динамическую память можно
+	просто перенести 	на место вызова пр иэтом ситуация когда два объекта испльзуют одну
+	область динам. памчти невозможно т.к. объект сразу же удаляется деструктором.
+	методы переноса принимают не константную и не ссылку на объект а так называемую 
+	r-value reference   Class&& other
+	методы переноса в обязательно порчдке должны очищать(обнулять)  другой объект
+	т.к. для него в любом случае будет вызван деструктор
+	если не обнулить указатель на динамическую памыть она будет удалена деструктором
+	и на месте вызова мы получим мусор.
+
+	*/
 
 	const int n = 5;
 	int arr[n] = { 3, 5, 8, 13 };
