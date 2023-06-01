@@ -28,33 +28,39 @@ public:
 	}
 
 	//				Constructors:
-	explicit String(int size = 80)//explicit запрет на неявное преобразование (инт в чар) 
+	 //переменные члены класса инициализируются в заголовке до того как тело конструктора отралотает
+	 explicit String(int size = 80):size(size), str(new char[size] {})//explicit запрет на неявное преобразование (инт в чар) 
 	{
-		this->size = size;
-		this->str = new char[size] {};
+		//this->size = size; //инициализируются в заголовке
+		//this->str = new char[size] {};//инициализируются в заголовке
+		 //new char[size] {} - выделенная память
 		cout << "Constructor:\t" << this << endl;
 	}
-	String(const char str[]) //конструктор с одним параметром тип  char задаем массив
+	 //конструктор с одним параметром тип  char задаем массив
+	String(const char str[]) :size(strlen(str) + 1), str(new char[size] {})
 	{
-		this->size = strlen(str) + 1;	//Поскольку класс хранит размер в Байтах,добавляем +1 нужен для хранения NULL-terminator -
-		this->str = new char[size] {};	//Выделяем память под строку
+		//инициализируются в заголовке
+		// чтобы отличить переменную и член от параметра перед ними пишем this
+		//this->size = strlen(str) + 1;	//Поскольку класс хранит размер в Байтах,добавляем +1 нужен для хранения NULL-terminator -
+		//this->str = new char[size] {};	//Выделяем память под строку
 		for (int i = 0; i < size; i++)this->str[i] = str[i];//заполнить строку
 		cout << "Constructor:\t" << this << endl; //выв
 	}
 
-	String(const String& other)
+	String(const String& other): size(other.size), str(new char[size] {})
 	{
-		this->size = other.size;
-		this->str = new char[size] {};
+		//this->size = other.size;//инициализируются в заголовке
+		//this->str = new char[size] {};//инициализируются в заголовке
 		for (int i = 0; i < size; i++) this->str[i] = other.str[i];
 		cout << "CopiConstr: " << this << endl;
 	}
 
-	String(String&& other)  //move - метод  Shellow copy - поверхностное копирoвоание
+	//move - метод  Shellow copy - поверхностное копирoвоание
+	String(String&& other): size(other.size), str(other.str)
 	{
 		//move - метод  Shellow copyвыполнили поверхностное копирвоание
-		this->size = other.size; // присвоить size
-		this->str = other.str;   // присвоить str
+		//this->size = other.size; // присвоить size
+		//this->str = other.str;   // присвоить str
 		//обнуляем другой объект
 		other.size = 0;
 		other.str = nullptr; // обнуление строки
@@ -65,7 +71,7 @@ public:
 	String& operator=(String&& other)  //move - метод  Shellow copy - поверхностное копирoвоание
 	{
 		//move - метод  Shellow copyвыполнили поверхностное копирвоание
-		delete[] str;
+		delete[] str;//удаление поэтому в заголовке написать не можем
 		this->size = other.size; // присвоить size
 		this->str = other.str;   // присвоить str
 		//обнуляем другой объект
